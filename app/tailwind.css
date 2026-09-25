@@ -1,0 +1,21 @@
+/* Tailwind v4, CSS-first config. Scoped to the dashboard shell only
+   (components/dashboard/*) — Preflight (Tailwind's base-element reset) is
+   deliberately left out below, so importing this sheet doesn't change
+   anything on the public site's pages, which already have their own
+   hand-tuned styles in globals.css. Only the utility classes (bg-primary,
+   flex, rounded-xl, etc.) become available; nothing is reset globally. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-primary: #17203a; /* deep ink navy — dashboard sidebar */
+  --color-secondary: #a4c639; /* lime accent — active states, top loader */
+  --color-accent: #5c7318; /* olive — matches the rest of the site */
+  --color-background: #f5f6f2; /* dashboard content background */
+  --color-dark: #17203a;
+  --color-text: #4b5468;
+
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}

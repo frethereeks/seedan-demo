@@ -1,0 +1,629 @@
+/* @import "tailwindcss"; */
+
+:root {
+  --ink: #17203a;
+  --ink-soft: #4b5468;
+  --accent: #5c7318;
+  --accent-bright: #a4c639;
+  --paper: #faf7f1;
+  --line: #e1d8c3;
+
+  /* Editorial palette for the public blog — matches the Karam Laza
+     reference: pale lavender-blue section backgrounds, a deep teal for
+     display headings, and a warm terracotta for "Read More" links. */
+  --blog-bg: #eef1fb;
+  --blog-heading: #2c5555;
+  --terracotta: #b9713e;
+  --post-banner-bg: #e7e7e7;
+  --post-content-bg: #f4f6fb;
+
+  --font-sans: var(--font-inter), "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none!;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Public site header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.site-header nav a {
+  margin-left: 28px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--accent);
+}
+
+/* Blog grid — pale lavender band holding both the heading and the card
+   grid, per the Karam Laza reference. */
+.blog-page-bg {
+  background: var(--blog-bg);
+}
+
+.blog-hero {
+  padding: 64px 0 40px;
+  text-align: center;
+}
+
+.blog-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--blog-heading);
+  margin: 0 0 16px;
+}
+
+.blog-hero p {
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 36px;
+  padding: 12px 0 72px;
+}
+
+.blog-card {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card .thumb {
+  aspect-ratio: 16/11;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #eef0e0, #dfe6c8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card .body {
+  padding: 18px 2px 0;
+}
+
+.blog-card .category {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9096ab;
+}
+
+.blog-card h3 {
+  font-weight: 600;
+  font-size: 19px;
+  margin: 10px 0 14px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.blog-card a.read-more {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1.5px;
+  color: var(--terracotta);
+}
+
+/* Post page — light banner with the title + breadcrumb, then a pale
+   content band holding the (repeated) title, hero image, byline row,
+   article body and sidebar. Matches the Karam Laza single-post layout. */
+.post-hero {
+  background: var(--post-banner-bg);
+  color: var(--ink);
+  padding: 44px 0 34px;
+}
+
+.post-hero .crumb {
+  font-size: 13px;
+  color: #7a7f8c;
+}
+
+.post-hero .crumb a {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.post-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 34px;
+  margin: 14px 0 0;
+  max-width: 46ch;
+  color: var(--ink);
+}
+
+.post-content-bg {
+  background: var(--post-content-bg);
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  padding: 40px 0 80px;
+}
+
+@media (max-width: 800px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-meta {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.post-article-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--blog-heading);
+  margin: 0 0 22px;
+}
+
+.post-hero-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  aspect-ratio: 16/9;
+  background: #e3e3e3;
+}
+
+.post-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-byline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.post-byline .author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+}
+
+.post-byline .avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.post-byline .icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.post-byline .icon-group {
+  display: flex;
+  gap: 10px;
+}
+
+.post-content img,
+.post-content video {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+
+.post-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333a4d;
+}
+
+.post-content h2 {
+  margin-top: 28px;
+  font-family: var(--font-serif);
+  color: var(--ink);
+}
+
+.post-content > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 0.8;
+  float: left;
+  padding: 6px 8px 0 0;
+  color: var(--blog-heading);
+}
+
+.sidebar-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  background: #fff;
+}
+
+.sidebar-card h4 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.sidebar-card .item {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.sidebar-card .item:first-child {
+  border-top: none;
+}
+
+.sidebar-card .item .item-meta {
+  font-size: 11.5px;
+  color: #9096ab;
+  margin-bottom: 4px;
+}
+
+.sidebar-card .item .item-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--blog-heading);
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sidebar-card .item .item-author {
+  font-size: 12px;
+  color: #9096ab;
+}
+
+/* Popular / Latest tab switcher in the post sidebar */
+.sidebar-tabs {
+  display: flex;
+  gap: 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.sidebar-tabs button {
+  background: none;
+  border: none;
+  padding: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9096ab;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.sidebar-tabs button.active {
+  color: var(--ink);
+  border-bottom-color: var(--blog-heading);
+}
+
+/* Auth pages */
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+}
+
+.auth-card h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.auth-card p.sub {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  margin: 0 0 24px;
+}
+
+.demo-accounts {
+  margin-top: 18px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  line-height: 1.6;
+}
+
+/* Tiptap editor */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #fafafa;
+}
+
+.editor-toolbar button {
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--ink-soft);
+}
+
+.editor-toolbar button:hover {
+  background: #eee;
+}
+
+.editor-toolbar button.is-active {
+  background: #e9f0d2;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.tiptap-body {
+  border: 1px solid var(--line);
+  border-radius: 0 0 8px 8px;
+  padding: 16px;
+  min-height: 320px;
+}
+
+.tiptap-body .ProseMirror {
+  outline: none;
+  min-height: 300px;
+}
+
+.tiptap-body .ProseMirror img,
+.tiptap-body .ProseMirror video {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.tiptap-body p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Multi-column image rows (2/3/4 across) — used both in published post
+   content (plain grid markup, no JS needed) and inside the Tiptap editor
+   (same grid, wrapped in editable chrome). */
+.img-grid {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.img-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.img-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.img-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.img-grid-cell {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0efe6;
+}
+
+.img-grid-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 8px;
+}
+
+.img-grid-cell-empty {
+  border: 1px dashed var(--line);
+  background: #fafafa;
+}
+
+@media (max-width: 640px) {
+  .img-grid-3,
+  .img-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .img-grid-2,
+  .img-grid-3,
+  .img-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Editor-only chrome around an image-grid node (not present in the
+   published HTML, since it's rendered only by the NodeView). */
+.img-grid-editor-wrap {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 14px 0;
+  background: #fafafa;
+}
+
+.img-grid-editor-wrap.is-selected {
+  border-color: var(--accent);
+}
+
+.img-grid-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.img-grid-editor-toolbar button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.img-grid-editor-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.img-grid-cell-actions {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.img-grid-cell:hover .img-grid-cell-actions {
+  opacity: 1;
+}
+
+.img-grid-cell-actions button {
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.img-grid-cell-empty-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #999;
+  font-size: 11.5px;
+  cursor: pointer;
+}

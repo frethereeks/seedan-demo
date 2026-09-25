@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  super_admin
+  admin
+  staff
+  user
+}
+
+enum MemberStatus {
+  pending
+  approved
+  rejected
+  suspended
+}
+
+enum PostStatus {
+  draft
+  published
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(user)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  posts   Post[]
+  member  Member?
+
+  @@map("smedan_users")
+}
+
+model Post {
+  id            Int        @id @default(autoincrement())
+  title         String
+  slug          String     @unique
+  category      String
+  excerpt       String     @db.VarChar(500)
+  coverImageUrl String?    @db.VarChar(1000)
+  contentHtml   String     @db.LongText
+  status        PostStatus @default(draft)
+  authorId      Int
+  publishedAt   DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
+
+  @@map("smedan_posts")
+}
+
+model Member {
+  id               Int          @id @default(autoincrement())
+  fullName         String
+  organizationName String
+  email            String       @unique
+  phone            String
+  category         String
+  stateOfOperation String
+  status           MemberStatus @default(pending)
+  reviewNote       String?      @db.VarChar(1000)
+  userId           Int?         @unique
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("smedan_members")
+}
