@@ -26,7 +26,12 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+// Falls back to the live deployment (not localhost) so that metadataBase —
+// and therefore the absolute og:image / twitter:image URLs derived from it —
+// resolves correctly even when NEXT_PUBLIC_SITE_URL isn't set on Vercel.
+// A localhost fallback here is why link previews (WhatsApp, iMessage, etc.)
+// were failing to load on phones: the image URL pointed at localhost.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seedan.vercel.app";
 const SITE_NAME = "SEEDAN Member Portal";
 const SITE_DESCRIPTION =
   "A working demo of the platform proposed for the Seed Entrepreneurs Association of Nigeria (SEEDAN): content management, membership registration & approval, and role-gated dashboards. It was built to show that day-to-day administration needs no developer, just a browser.";
