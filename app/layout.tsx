@@ -29,7 +29,7 @@ const inter = Inter({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const SITE_NAME = "SEEDAN Member Portal";
 const SITE_DESCRIPTION =
-  "A working demo of the platform proposed for the Seed Entrepreneurs Association of Nigeria (SEEDAN): content management, membership registration & approval, and role-gated dashboards — built to show that day-to-day administration needs no developer, just a browser.";
+  "A working demo of the platform proposed for the Seed Entrepreneurs Association of Nigeria (SEEDAN): content management, membership registration & approval, and role-gated dashboards. It was built to show that day-to-day administration needs no developer, just a browser.";
 
 export const metadata: Metadata = {
   title: {
