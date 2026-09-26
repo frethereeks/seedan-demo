@@ -4,4 +4,4 @@ node_modules
 .env.example
 public/uploads
 *.log
-README.md
+INSTRUCTION.md

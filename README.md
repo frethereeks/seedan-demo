@@ -1,2 +1,4 @@
 # seedan-demo
 A working demo of the platform proposed for the Seed Entrepreneurs Association of Nigeria (SEEDAN): content management, membership registration &amp; approval, and role-gated dashboards. It is built to show that day-to-day administration needs no developer, just a browser.
+
+This is a demo, not the final deliverable — it exists solely to answer SEEDAN's evaluation committee's question about whether a Next.js-based platform can be operated without a developer. We intentionally left out things covered in the full proposal (Paystack dues payment, events/jobs board, full audit logging, production hardening, etc.) to keep the build focused on the two features the committee specifically asked about: content management and membership handling.

@@ -47,7 +47,7 @@ export default function HomePage() {
                 fontSize: 14.5,
               }}
             >
-              Log in to the dashboard
+              Go to dashboard
             </Link>
           </div>
         </div>

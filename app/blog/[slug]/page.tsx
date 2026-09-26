@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Share2, Heart } from "lucide-react";
+import { Share2, Heart, ChevronRightIcon } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import PostSidebarTabs from "@/components/PostSidebarTabs";
 import { prisma } from "@/lib/db";
@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="post-hero">
         <div className="container">
           <div className="crumb">
-            <Link href="/">Home</Link> &nbsp;&gt;&nbsp; <Link href="/blog">Blog</Link> &nbsp;&gt;&nbsp;{" "}
+            <Link href="/">Home</Link> <ChevronRightIcon size={10}/> <Link href="/blog">Blog</Link> <ChevronRightIcon size={10}/>{" "}
             {post!.title}
           </div>
           <h1>{post!.title}</h1>
